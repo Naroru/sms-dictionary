@@ -1,6 +1,6 @@
 package com.example.sms_dictionary.model.segment.service.dto;
 
-import jakarta.persistence.Column;
+
 import lombok.Getter;
 import lombok.Setter;
 
