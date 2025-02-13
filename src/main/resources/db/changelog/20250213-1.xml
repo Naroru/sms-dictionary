@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="1739425930488-1" author="naro">
+        <createTable tableName="segments">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_segments"/>
+            </column>
+            <column name="name" type="VARCHAR(80)"/>
+            <column name="is_deleted" type="BOOLEAN"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1739425987249-1" author="naro">
+        <createIndex tableName="segments" indexName="segments_name_idx">
+            <column name="name"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>
