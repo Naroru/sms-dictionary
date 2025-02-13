@@ -1,42 +1,51 @@
 package com.example.sms_dictionary.model.segment.service;
 
+import com.example.sms_dictionary.model.segment.service.dto.SegmentDto;
 import com.example.sms_dictionary.model.segment.entity.Segment;
 import com.example.sms_dictionary.repository.SegmentRepository;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class SegmentServiceImpl implements SegmentService {
 
   private final SegmentRepository repository;
-private final ModelMapper
+  private final ModelMapper modelMapper;
 
   @Override
-  public Optional<Segment> findById(Long id) {
-    return repository.findById(id);
+  public SegmentDto findById(Long id) {
+    return repository.findById(id)
+        .map(segment -> modelMapper.map(segment, SegmentDto.class))
+        .orElseThrow(() -> new EntityNotFoundException("Segment with id " + id + " not found"));
   }
 
   @Override
-  public List<Segment> findAll() {
-    return repository.findAll();
+  public List<SegmentDto> findAll() {
+    return repository.findAll()
+        .stream()
+        .map(segment -> modelMapper.map(segment,SegmentDto.class))
+        .toList();
   }
 
   @Override
-  public Segment save(Segment segment) {
-    return repository.save(segment);
+  public SegmentDto save(SegmentDto dto) {
+    Segment segment = modelMapper.map(dto, Segment.class);
+    return modelMapper.map(repository.save(segment),SegmentDto.class);
+
   }
 
   @Override
   @Transactional
   public void setDeleted(Long id) {
-     repository.findById(id).ifPresent(segment -> {
-       segment.setDeleted(!segment.isDeleted());
-       repository.save(segment);
-     });
+    repository.findById(id).ifPresent(segment -> {
+      segment.setDeleted(!segment.isDeleted());
+      repository.save(segment);
+    });
   }
 }
