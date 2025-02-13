@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: sms-dicrionary
+  datasource:
+    username: admin
+    password: password
+    url: jdbc:postgresql://localhost:5432/sms_dictionary
+  liquibase:
+    change-log: db/changelog-master.yaml
