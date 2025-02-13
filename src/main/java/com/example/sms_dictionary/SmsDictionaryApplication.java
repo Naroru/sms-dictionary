@@ -4,10 +4,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SmsDicrionaryApplication {
+public class SmsDictionaryApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(SmsDicrionaryApplication.class, args);
+    SpringApplication.run(SmsDictionaryApplication.class, args);
   }
 
 }
+
