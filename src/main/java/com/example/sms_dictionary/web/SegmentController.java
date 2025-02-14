@@ -15,7 +15,7 @@ public class SegmentController {
 private final SegmentService segmentService;
 
   @GetMapping("/{id}")
-  public SegmentDto getById(@PathVariable long id){
+  public SegmentDto findById(@PathVariable long id) {
     return segmentService.findById(id);
   }
 
@@ -28,6 +28,7 @@ private final SegmentService segmentService;
   public List<SegmentDto> findAll(){
     return segmentService.findAll();
   }
+
   @DeleteMapping("/{id}")
   public void setDeleted(@PathVariable long id){
     segmentService.setDeleted(id);
