@@ -34,4 +34,8 @@
         </createIndex>
     </changeSet>
 
+    <changeSet id="1" author="products">
+        <modifyDataType tableName="products" columnName="nds" newDataType="VARCHAR(10)"/>
+    </changeSet>
+
 </databaseChangeLog>
