@@ -1,6 +1,6 @@
 spring:
   application:
-    name: sms-dicrionary
+    name: sms-dictionary
   datasource:
     username: admin
     password: password
