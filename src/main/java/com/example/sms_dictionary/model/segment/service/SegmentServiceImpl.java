@@ -7,6 +7,7 @@ import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,6 +32,14 @@ public class SegmentServiceImpl implements SegmentService {
         .stream()
         .map(segment -> modelMapper.map(segment,SegmentDto.class))
         .toList();
+  }
+
+  @Override
+  public List<SegmentDto> findBySpecification(Specification<Segment> specification) {
+    return repository.findAll(specification)
+            .stream()
+            .map(segment -> modelMapper.map(segment,SegmentDto.class))
+            .toList();
   }
 
   @Override
