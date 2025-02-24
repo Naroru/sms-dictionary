@@ -19,8 +19,8 @@ private final SegmentService segmentService;
     return segmentService.findById(id);
   }
 
-  @PostMapping
-  public SegmentDto save(SegmentDto dto){
+  @PostMapping()
+  public SegmentDto save(@RequestBody SegmentDto dto){
     return segmentService.save(dto);
   }
 
