@@ -1,5 +1,6 @@
 package com.example.sms_dictionary.web;
 
+import com.example.sms_dictionary.common.searchcriteria.SearchCriteria;
 import com.example.sms_dictionary.model.segment.service.SegmentService;
 import com.example.sms_dictionary.model.segment.service.dto.SegmentDto;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +20,7 @@ private final SegmentService segmentService;
     return segmentService.findById(id);
   }
 
-  @PostMapping()
+  @PostMapping
   public SegmentDto save(@RequestBody SegmentDto dto){
     return segmentService.save(dto);
   }
@@ -29,9 +30,9 @@ private final SegmentService segmentService;
     return segmentService.findAll();
   }
 
-  @GetMapping("/spec")
-  public List<SegmentDto> findAllSpec(@RequestBody Specification<Segment> spec){
-    return segmentService.findAll(spec);
+  @PostMapping("/spec")
+  public List<SegmentDto> findAllSpec(@RequestBody SearchCriteria searchCriteria) {
+    return segmentService.findBySearchCriteria(searchCriteria);
   }
 
   @DeleteMapping("/{id}")
