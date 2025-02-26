@@ -1,10 +1,15 @@
+server:
+  port: 8081
+
 spring:
   application:
     name: sms-dictionary
+
   datasource:
     username: admin
     password: password
     url: jdbc:postgresql://localhost:5432/sms_dictionary
     driver-class-name: org.postgresql.Driver
+
   liquibase:
     change-log: db/changelog-master.yaml
