@@ -1,13 +1,14 @@
 package com.example.sms_dictionary.model.segment.service;
 
-import com.example.sms_dictionary.model.segment.service.dto.SegmentDto;
+import com.example.sms_dictionary.common.SpecificationBuilder;
+import com.example.sms_dictionary.common.searchcriteria.SearchCriteria;
 import com.example.sms_dictionary.model.segment.entity.Segment;
+import com.example.sms_dictionary.model.segment.service.dto.SegmentDto;
 import com.example.sms_dictionary.repository.SegmentRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class SegmentServiceImpl implements SegmentService {
 
   private final SegmentRepository repository;
   private final ModelMapper modelMapper;
+  private final SpecificationBuilder<Segment> specificationBuilder;
 
   @Override
   public SegmentDto findById(Long id) {
@@ -35,11 +37,11 @@ public class SegmentServiceImpl implements SegmentService {
   }
 
   @Override
-  public List<SegmentDto> findBySpecification(Specification<Segment> specification) {
-    return repository.findAll(specification)
-            .stream()
-            .map(segment -> modelMapper.map(segment,SegmentDto.class))
-            .toList();
+  public List<SegmentDto> findBySearchCriteria(SearchCriteria searchCriteria) {
+    return repository.findAll(specificationBuilder.createSpecification(searchCriteria))
+        .stream()
+        .map(segment -> modelMapper.map(segment, SegmentDto.class))
+        .toList();
   }
 
   @Override
