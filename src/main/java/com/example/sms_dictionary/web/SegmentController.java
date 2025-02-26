@@ -3,6 +3,7 @@ package com.example.sms_dictionary.web;
 import com.example.sms_dictionary.model.segment.service.SegmentService;
 import com.example.sms_dictionary.model.segment.service.dto.SegmentDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,6 +28,11 @@ private final SegmentService segmentService;
   @GetMapping
   public List<SegmentDto> findAll(){
     return segmentService.findAll();
+  }
+
+  @GetMapping("/spec")
+  public List<SegmentDto> findAllSpec(@RequestBody Specification<Segment> spec){
+    return segmentService.findAll(spec);
   }
 
   @DeleteMapping("/{id}")
