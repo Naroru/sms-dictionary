@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotBlank;
+
 @Entity
 @Table(name = "segments")
 @Setter
@@ -18,6 +20,7 @@ public class Segment {
   private Long id;
 
   @Column(name = "name")
+  @NotBlank
   private String name;
 
   @Column(name = "is_deleted")
