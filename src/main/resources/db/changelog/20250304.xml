@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+
+    <changeSet id="1741068168791-1" author="naro">
+        <createTable tableName="suppliers">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_suppliers"/>
+            </column>
+            <column name="name" type="VARCHAR(100)"/>
+            <column name="inn" type="VARCHAR(10)"/>
+            <column name="is_deleted" type="BOOLEAN"/>
+            <column name="contact_person_phone" type="VARCHAR(10)"/>
+            <column name="street" type="VARCHAR(100)"/>
+            <column name="building_number" type="VARCHAR(5)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1741068236972-1" author="naro">
+        <createIndex tableName="suppliers" indexName="suppliers_inn_idx">
+            <column name="inn"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>
