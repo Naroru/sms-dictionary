@@ -1,5 +1,6 @@
 package com.example.sms_dictionary.web;
 
+import com.example.sms_dictionary.common.searchcriteria.SearchCriteria;
 import com.example.sms_dictionary.model.product.service.ProductService;
 import com.example.sms_dictionary.model.product.service.dto.ProductDto;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +23,11 @@ public class ProductController {
   @GetMapping
   public List<ProductDto> findAll() {
     return productService.findAll();
+  }
+
+  @PostMapping("/criteria")
+  public List<ProductDto> findByCriteria(@RequestBody SearchCriteria criteria) {
+    return productService.findByCriteria(criteria);
   }
 
   @PostMapping
