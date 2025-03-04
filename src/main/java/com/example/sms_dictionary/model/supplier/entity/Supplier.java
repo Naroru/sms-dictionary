@@ -32,4 +32,6 @@ public class Supplier {
       @AttributeOverride(name = "phone", column = @Column(name = "contact_person_phone"))})
   private ContactInfo contactInfo;
 
+  @Column(name = "is_deleted")
+  private boolean isDeleted;
 }
