@@ -8,10 +8,10 @@ import lombok.Setter;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-
 @Entity
 @Getter
 @Setter
+@Table(name = "suppliers")
 public class Supplier {
 
   @Id
