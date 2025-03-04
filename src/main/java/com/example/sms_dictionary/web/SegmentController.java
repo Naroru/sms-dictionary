@@ -4,7 +4,6 @@ import com.example.sms_dictionary.common.searchcriteria.SearchCriteria;
 import com.example.sms_dictionary.model.segment.service.SegmentService;
 import com.example.sms_dictionary.model.segment.service.dto.SegmentDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,9 +30,9 @@ private final SegmentService segmentService;
     return segmentService.findAll();
   }
 
-  @PostMapping("/spec")
-  public List<SegmentDto> findAllSpec(@RequestBody SearchCriteria searchCriteria) {
-    return segmentService.findBySearchCriteria(searchCriteria);
+  @PostMapping("/criteria")
+  public List<SegmentDto> findAllCriteria(@RequestBody SearchCriteria criteria) {
+    return segmentService.findBySearchCriteria(criteria);
   }
 
   @DeleteMapping("/{id}")
