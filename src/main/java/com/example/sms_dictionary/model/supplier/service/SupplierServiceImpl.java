@@ -4,7 +4,7 @@ import com.example.sms_dictionary.common.SpecificationBuilder;
 import com.example.sms_dictionary.common.searchcriteria.SearchCriteria;
 import com.example.sms_dictionary.model.supplier.entity.Supplier;
 import com.example.sms_dictionary.model.supplier.service.dto.SupplierDto;
-import com.example.sms_dictionary.repository.SupplierReposiory;
+import com.example.sms_dictionary.repository.SupplierRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class SupplierServiceImpl implements SupplierService {
 
-  private final SupplierReposiory repository;
+  private final SupplierRepository repository;
   private final ModelMapper mapper;
   private final SpecificationBuilder<Supplier> specificationBuilder;
 
